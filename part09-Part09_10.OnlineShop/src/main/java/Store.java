@@ -18,20 +18,23 @@ public class Store {
         
         ShoppingCart cart = new ShoppingCart();
         
-        String input;
         
-        do {
+        while (true) {
             System.out.println("What to put in the cart? (press ENTER to proceed to checkout)");
-            input = scanner.nextLine();
+            String input = scanner.nextLine();
+            
+            if (input.isEmpty()) {
+                break;
+            }
             
             if (this.warehouse.take(input)) {
                 cart.add(input, this.warehouse.price(input));
-                System.out.println(input + "added successfully!");
+                System.out.println(input + " added successfully!");
             } else {
                 System.out.println("Sorry! Item not available.");
             }
             
-        } while(!input.isEmpty());
+        }
         
         checkout(cart);
         
