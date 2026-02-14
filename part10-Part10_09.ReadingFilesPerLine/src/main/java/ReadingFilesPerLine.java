@@ -3,13 +3,13 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+//import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class ReadingFilesPerLine {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        //Scanner scanner = new Scanner(System.in);
         String file = "file.txt";
         
         read(file).stream().forEach(s -> System.out.println(s));
@@ -21,7 +21,8 @@ public class ReadingFilesPerLine {
         List<String> rows = new ArrayList<>();
         
         try {
-            Files.lines(Paths.get(file)).forEach(row -> rows.add(row));
+            Files.lines(Paths.get(file))
+                    .forEach(row -> rows.add(row));
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
